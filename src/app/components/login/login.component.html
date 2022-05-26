@@ -1,0 +1,63 @@
+<!-- <div class="container my-5">
+  <label>UserName</label>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="enter your name"
+    [(ngModel)]="name"
+    
+    [class.sucsess]="name.length >4"/>
+  <p class="alert alert-danger" *ngIf="name.length <=4">Invalid Username</p> -->
+  <!-- ////////////////////////////////////////////////// -->
+  <!-- <label>Faculty</label>
+  <input
+    type="text"
+    class="form-control mt-2"
+    placeholder="enter your Faculty"
+    [(ngModel)]="faculty"
+    [class.sucsess]="faculty.length >5"
+  />
+  <p class="alert alert-danger" *ngIf="faculty.length <=5">Invalid Faculty</p> -->
+  <!-- ////////////////////////////////////////////////// -->
+  <!-- <label>Age</label>
+  <input
+    type="number"
+    class="form-control mt-2"
+    placeholder="enter your age"
+    [(ngModel)]="age"
+    min="18"
+  /> -->
+  <!-- ///////////////////////////////////////////////// -->
+  <!-- <button class="btn btn-danger mt-3" (click)="addStudent()">
+    Add Student
+  </button>
+</div> -->
+
+
+<!--////////////////////////// Directive Forms////////////////// -->
+<div class="container bg-light m-5 " >
+  <form [formGroup]="ourValidaion" action="test.html">
+    <div class="mb-3 mt-5">
+      <label for="exampleInputEmail1" class="form-label">User Name</label>
+      <input [class.sucsess]="checkUsernameValidation"  formControlName="username" type="text" class="form-control" id="exampleInputUser" placeholder="Enter Your Name ">
+      <div class="form-text text-danger" *ngIf="!checkUsernameValidation">Please , Check UserName !!</div>
+    </div>
+    <div class="mb-3 ">
+      <label for="exampleInputEmail1" class="form-label">Age</label>
+      <input [class.sucsess]="checkAgeValidation" formControlName="age" type="number" class="form-control" placeholder="Enter Your Age " >
+      <div class="form-text text-danger" *ngIf="!checkAgeValidation">Invalid Age !!</div>
+    </div>
+    <div class="mb-3 ">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input [class.sucsess]="checkEmailValidation" formControlName="email" type="email" class="form-control" placeholder="Enter Your E-mail ">
+      <div class="form-text text-danger" *ngIf="!checkEmailValidation">Please , Check Your E-mail !!</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input [class.sucsess]="checkPasswordValidation" formControlName="password" type="password" class="form-control" placeholder="Enter Your Password ">
+      <div class="form-text text-danger" *ngIf="!checkPasswordValidation">Please , Check Your Password !</div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="SubmitLogin()">Login</button>
+    <h4 class="text-center text-success ">{{submition}}</h4>
+  </form>
+</div>

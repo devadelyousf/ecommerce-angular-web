@@ -1,0 +1,61 @@
+<h2 class="text-center text-decoration-underline text-primary mt-5">Product</h2>
+
+
+<div class=" m-5 text-center">
+  <button type="button" class="btn btn-dark m-2" (click)="filterBy('all')">ALL</button>
+  <button type="button" class="btn btn-dark m-2" (click)="filterBy('iphone')">Iphones</button>
+  <button type="button" class="btn btn-dark m-2" (click)="filterBy('clothes')">clothes</button>
+  <button type="button" class="btn btn-dark m-2" (click)="filterBy('Watch')">Whatches</button>
+</div>
+<table class="table mt-5">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">ID</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Image</th>
+      <th scope="col">Quntity</th>
+      <th scope="col">required Quntity</th>
+      <th scope="col">Price</th>
+      <th scope="col">DATE</th>
+      <th scope="col">Buy Now</th>
+      <th scope="col">Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of filterProduct" class="text-center">
+      <td>{{ product.id }}</td>
+      <td>{{ product.title | uppercase }}</td>
+      <td><img appLightbox src="{{ product.imageUrl }}" /></td>
+      <td>{{ product.quantity }}</td>
+      <td>
+        <input
+          type="number"
+          #temp
+          class="form-control"
+          value="1"
+          min="1"
+          placeholder="Enter Quantity"
+        />
+      </td>
+      <td>{{ product.price | currency: "EGP" }}</td>
+      <td>{{ myDate | date }}</td>
+
+      <td>
+        <button
+          class="btn btn-danger"
+          (click)="buyProduct(product.price, temp.value)"
+        >
+          Buy Now
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-warning" routerLink="/info/{{ product.id }}">
+          Details
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="text-uppercase font-weight-bold m-5">
+  Total Price is :<span class="text-danger"> {{ totalPrice }}</span>
+</p>
